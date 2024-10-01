@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Pegada de Carbono</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            /* background-color: #e95e0e; */
+            background: url("assets/03.jpg");
+            background-repeat: no-repeat;
+            background-position: center bottom;
+        display: table;
+        width: 100%;
+        height: 100%;
+        padding: 100px 0;
+        text-align: center;
+        color: white;
+        background: url("assets/03.jpg") no-repeat bottom center scroll;
+        background-position: 30% 45%;
+        background-color: black;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;s
+        -o-background-size: cover;
+        margin: 0;
+        padding: 20px;
+        }
+        .container {
+            background: url("/assets/01.jpg");
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(177, 245, 197, 0.39);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #f3f3f3;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        label {
+            font-size: 16px;
+            color: #ffffff;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: hsl(83, 100%, 50%);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .result h2 {
+            color: #333;
+        }
+        .result p {
+            font-size: 16px;
+            color: #555;
+        }
+        .minhanovacor {
+          color: blue;  
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Pegada de Carbono</h1>
+        <form id="carbonForm">
+            <!-- Perguntas com alternativas -->
+            <div class="question">
+                <label>1. Quantas horas por semana você dirige?</label><br>
+                <select id="q1">
+                    <option value="0">Não dirijo</option>
+                    <option value="0.5">Menos de 5 horas</option>
+                    <option value="1.5">Entre 5 e 15 horas</option>
+                    <option value="3">Mais de 15 horas</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>2. Quantas vezes por ano você viaja de avião?</label><br>
+                <select id="q2">
+                    <option value="0">Nenhuma</option>
+                    <option value="2">1 a 3 vezes</option>
+                    <option value="5">Mais de 3 vezes</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>3. Quantos kg de carne você consome por semana?</label><br>
+                <select id="q3">
+                    <option value="0.2">Menos de 1kg</option>
+                    <option value="0.5">1 a 3kg</option>
+                    <option value="1">Mais de 3kg</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>4. Quantas horas por dia você usa ar-condicionado?</label><br>
+                <select id="q4">
+                    <option value="0.5">Menos de 2 horas</option>
+                    <option value="2">Entre 2 e 6 horas</option>
+                    <option value="4">Mais de 6 horas</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>5. Quantos dias por semana você utiliza transporte público?</label><br>
+                <select id="q5">
+                    <option value="0">Nenhum</option>
+                    <option value="0.5">1 a 3 dias</option>
+                    <option value="1">Mais de 3 dias</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>6. Qual a principal fonte de energia da sua casa?</label><br>
+                <select id="q6">
+                    <option value="0.1">Energia renovável (solar, eólica, etc.)</option>
+                    <option value="1">Energia elétrica normal</option>
+                    <option value="2">Carvão ou petróleo</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>7. Quantos eletrônicos você deixa ligados por mais de 2 horas ao dia?</label><br>
+                <select id="q7">
+                    <option value="0.2">1 a 2 aparelhos</option>
+                    <option value="0.5">3 a 5 aparelhos</option>
+                    <option value="1">Mais de 5 aparelhos</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>8. Quantos litros de água você consome por dia (estimativa)?</label><br>
+                <select id="q8">
+                    <option value="0.1">Menos de 5 litros</option>
+                    <option value="0.5">Entre 5 e 10 litros</option>
+                    <option value="1">Mais de 15 litros</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>9. Você recicla resíduos domésticos?</label><br>
+                <select id="q9">
+                    <option value="0.1">Sempre</option>
+                    <option value="0.3">Às vezes</option>
+                    <option value="0.5">Nunca</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>10. Quantas roupas novas você compra por mês?</label><br>
+                <select id="q10">
+                    <option value="0.1">Nenhuma</option>
+                    <option value="0.3">1 a 2 peças</option>
+                    <option value="0.5">Mais de 2 peças</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>11. Qual o tipo de alimentação que você segue?</label><br>
+                <select id="q11">
+                    <option value="0.1">Vegetariana</option>
+                    <option value="0.5">Onívora (inclui carne e vegetais)</option>
+                    <option value="1">Alta em carne vermelha</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>12. Quantos quilômetros por ano você dirige?</label><br>
+                <select id="q12">
+                    <option value="0">Não dirijo</option>
+                    <option value="1">Menos de 1.000 km</option>
+                    <option value="3">1.000 a 10.000 km</option>
+                    <option value="5">Mais de 10.000 km</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>13. Quantas refeições prontas (delivery) você consome por semana?</label><br>
+                <select id="q13">
+                    <option value="0">Nenhuma</option>
+                    <option value="0.5">1 a 3</option>
+                    <option value="1">Mais de 3</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>14. Você pratica jardinagem ou cultiva plantas em casa?</label><br>
+                <select id="q14">
+                    <option value="0.1">Sim, regularmente</option>
+                    <option value="0.3">Às vezes</option>
+                    <option value="0.5">Não</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>15. Qual a sua atitude em relação ao consumo consciente?</label><br>
+                <select id="q15">
+                    <option value="0.1">Sou muito consciente</option>
+                    <option value="0.3">Sou moderadamente consciente</option>
+                    <option value="0.5">Não me preocupo com isso</option>
+                </select>
+            </div>
+
+            <button type="button" onclick="calcularPegada()">Calcular Pegada de Carbono</button>
+        </form>
+
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularPegada() {
+            // Captura os valores das respostas
+            var total_emissao = 0;
+            for (var i = 1; i <= 15; i++) {
+                total_emissao += parseFloat(document.getElementById('q' + i).value);
+            }
+
+            // Conversão de impacto para toneladas de CO2 (média global: 5 toneladas)
+            var toneladas_carbono = total_emissao * 0.5;  // Supondo 0.5 toneladas por ponto de impacto.
+
+            // Cálculo de quantos planetas seriam necessários
+            var emissao_mundial_per_capita = 5;  // Em média, 5 toneladas per capita.
+            var planetas = (toneladas_carbono / emissao_mundial_per_capita).toFixed(2);
+
+            // Exibir o resultado
+            document.getElementById('resultado').innerHTML = `
+                <h2>Resultado:</h2>
+                <p>Sua pegada de carbono anual é de aproximadamente <strong>${toneladas_carbono.toFixed(2)} toneladas de CO₂</strong>.</p>
+                <p>Se todos vivessem como você, seriam necessários <strong>${planetas}</strong> planetas Terra para sustentar o estilo de vida atual.</p>
+            `;
+        }
+    </script>
+</body>
+</html>
